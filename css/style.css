@@ -65,6 +65,9 @@
   overflow-y: scroll ;
   grid-column: 2;
 }
+.animais-lista li{
+  cursor: pointer;
+}
 
 .animais-lista::-webkit-scrollbar{
   width: 18px;
@@ -83,6 +86,26 @@
 .animais-descricao section{
   margin-bottom: 3rem;
 }
+
+/* Navegação por tab */
+.js .js-tabcontent{
+  display: none;
+}
+.js .js-tabcontent.ativo{
+  display: block !important;
+  animation: show .5s forwards;
+}
+@keyframes show{
+  from {
+    opacity: 0;
+    transform: translate3d(-30px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 .faq-lista{
   grid-column: 2/4;
 }
