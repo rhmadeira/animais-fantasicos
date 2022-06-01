@@ -1,16 +1,40 @@
-const tabMenu = document.querySelectorAll('.js-tabmenu li')
-const tabContent = document.querySelectorAll('.js-tabcontent')
+function initTabNav() {
 
-if(tabMenu.length && tabContent.length){
+  const tabMenu = document.querySelectorAll('.js-tabmenu li')
+  const tabContent = document.querySelectorAll('.js-tabcontent')
 
-tabContent[0].classList.add("ativo")
+  if (tabMenu.length && tabContent.length) {
 
-function activeTab(index){
-  tabContent.forEach(section => section.classList.remove("ativo"))
-  tabContent[index].classList.add("ativo")
+    tabContent[0].classList.add("ativo")
+
+    function activeTab(index) {
+      tabContent.forEach(section => section.classList.remove("ativo"))
+      tabContent[index].classList.add("ativo")
+    }
+
+    tabMenu.forEach((item, index) => {
+      item.addEventListener("click", () => activeTab(index))
+    })
+  }
 }
+initTabNav();
 
-tabMenu.forEach((item, index) => {
-  item.addEventListener("click", () => activeTab(index))
-})
+function initAcordion() {
+  const questions = document.querySelectorAll(".js-accordion dt")
+
+  if (questions.length) {
+
+    questions[0].classList.add("comeDown")
+    questions[0].nextElementSibling.classList.add("comeDown")
+
+
+    function activeAccordion() {
+      this.nextElementSibling.classList.toggle("comeDown")
+      this.classList.toggle("comeDown")
+    }
+
+    questions.forEach(item => item.addEventListener("click", activeAccordion))
+  }
+
 }
+initAcordion()
