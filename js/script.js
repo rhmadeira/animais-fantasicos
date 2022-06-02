@@ -38,3 +38,45 @@ function initAcordion() {
 
 }
 initAcordion()
+
+function initSmoothScroll() {
+
+  const linksInternos = document.querySelectorAll(".js-menu a[href^='#']")
+
+  function smoothScroll(event) {
+    event.preventDefault();
+    const href = this.getAttribute("href");
+    const section = document.querySelector(href);
+    section.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
+  linksInternos.forEach(item => item.addEventListener("click", smoothScroll))
+
+}
+initSmoothScroll()
+
+function initAnimaScroll() {
+
+  const section = document.querySelectorAll('.js-scroll');
+
+  if (section.length) {
+    const middleScreen = window.innerHeight * 0.6;
+
+    function animaScroll() {
+      section.forEach(item => {
+        const distanceTop = item.getBoundingClientRect().top - middleScreen
+        if (distanceTop <= 0) {
+          item.classList.add("ativo")
+        }
+      })
+
+    }
+
+    animaScroll()
+
+    document.addEventListener('scroll', animaScroll)
+  }
+}
+initAnimaScroll()
