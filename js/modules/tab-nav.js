@@ -10,7 +10,6 @@ export default function initTabNav() {
     function activeTab(index) {
       tabContent.forEach(section => section.classList.remove("ativo"));
       const direction = tabContent[index].dataset.anime
-      console.log(direction)
       tabContent[index].classList.add("ativo", direction);
     }
 
